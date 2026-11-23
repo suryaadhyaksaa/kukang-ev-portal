@@ -1,0 +1,17 @@
+{
+    "name": "KUKANG EV — Attendance & Contribution Tracker",
+    "short_name": "KUKANG EV",
+    "description": "Sistem Absensi QR & Kontribusi Tim KUKANG EV ITERA",
+    "start_url": "/dashboard",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#060606",
+    "theme_color": "#060606",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        }
+    ]
+}

@@ -16,7 +16,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
 
-    // Cache-First hanya untuk aset hasil build Vite, gambar, dan font
     if (
         event.request.method === 'GET' &&
         (url.pathname.startsWith('/build/') ||

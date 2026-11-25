@@ -13,7 +13,7 @@
                     </span>
                 </div>
                 <h2 class="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-[26px]">
-                    Selamat Datang, {{ auth()->user()->name }}
+                    Selamat Datang, {{ auth()->user()?->name ?? 'Pengguna' }}
                 </h2>
                 <p class="mt-1.5 text-xs leading-relaxed text-zinc-400 sm:text-[13px]">
                     Pantau metrik kehadiran anggota secara real-time, progres kontribusi teknis maupun non-teknis, dan arsip dokumentasi KUKANG EV ITERA.
@@ -293,19 +293,19 @@
                     <div class="flex items-center justify-between rounded-xl border border-zinc-800/90 bg-[#060606]/90 px-4 py-3 transition hover:border-[#C6A343]/40">
                         <div class="flex items-center gap-3 min-w-0">
                             <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#C6A343]/15 font-display text-[11px] font-bold text-[#C6A343]">
-                                {{ strtoupper(substr($att->member->full_name, 0, 2)) }}
+                                {{ strtoupper(substr($att->member?->full_name ?? 'AG', 0, 2)) }}
                             </div>
                             <div class="min-w-0">
                                 <p class="truncate font-semibold text-white">
-                                    {{ $att->member->full_name }}
-                                    <span class="font-mono text-[11px] font-normal text-[#C6A343]">({{ $att->member->nim }})</span>
+                                    {{ $att->member?->full_name ?? 'Anggota Dihapus' }}
+                                    <span class="font-mono text-[11px] font-normal text-[#C6A343]">({{ $att->member?->nim ?? '-' }})</span>
                                 </p>
-                                <p class="truncate text-[11px] text-zinc-400">{{ $att->event->title }}</p>
+                                <p class="truncate text-[11px] text-zinc-400">{{ $att->event?->title ?? 'Agenda Dihapus' }}</p>
                             </div>
                         </div>
                         <div class="ml-3 shrink-0 text-right">
                             <span class="block font-mono text-[11px] font-semibold text-[#C6A343]">
-                                {{ $att->checked_in_at->timezone('Asia/Jakarta')->format('H:i:s') }} WIB
+                                {{ $att->checked_in_at?->timezone('Asia/Jakarta')->format('H:i:s') ?? '-' }} WIB
                             </span>
                             <span class="mt-0.5 inline-block rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-[9px] uppercase text-zinc-300">
                                 {{ $att->status }}
@@ -336,7 +336,7 @@
                     <div class="flex items-center justify-between rounded-xl border border-zinc-800/90 bg-[#060606]/90 px-4 py-3 transition hover:border-[#A80D0D]/50">
                         <div class="min-w-0 pr-3">
                             <p class="truncate font-semibold text-white">
-                                {{ $cont->member->full_name }}
+                                {{ $cont->member?->full_name ?? 'Anggota Dihapus' }}
                                 <span class="text-zinc-600">•</span>
                                 <span class="text-[#C6A343]">{{ $cont->category }}</span>
                             </p>
